@@ -15,6 +15,47 @@ decimal preco = 1.80M;
 DateTime dataAtual = DateTime.Now; // sempre pega a data atual da máquina que está executando
 
 
+// Conversões - Cast - Casting
+
+int a = Convert.ToInt32("5"); // converte null para 0
+int b = int.Parse("5"); // não aceita nulo, dá erro se receber null
+
+int c = 5;
+string d = c.ToString(); // todas as classes do c# herdam da classe object e essa classe object tem o método ToString()
+
+// Cast Implícito
+int e = 5;
+double f = e; // um inteiro cabe no double, por isso ele faz uma conversão direta
+
+int g = 5;
+long h = g; // tbm faz cast inplícito pq um inteiro cabe no long
+
+// Conversão segura
+
+string i = "15-";
+int j = 0;
+int.TryParse(i, out j); // tenta converter i e se não der retorna j;
+int.TryParse(i, out int k); // coloca o valor padrao 0 para k
+
+// Switch
+Console.WriteLine("Digite uma letra");
+string? letra = Console.ReadLine();
+
+switch(letra)
+{
+    case "a":
+    case "e":
+    case "i":
+    case "o":
+    case "u":
+        Console.WriteLine("Vogal");
+        break;
+    default:
+        Console.WriteLine("Não é uma vogal");
+        break;
+}
+
+
 Console.WriteLine(apresentacao);
 Console.WriteLine(quantidade);
 Console.WriteLine(altura);
@@ -24,5 +65,7 @@ Console.WriteLine(dataAtual);
 Console.WriteLine(dataAtual.ToString("dd/MM/yyyy"));
 Console.WriteLine(dataAtual.ToString("dd/MM/yyyy HH:mm"));
 Console.WriteLine(DateTime.Now.AddDays(5));
+Console.WriteLine(a);
+Console.WriteLine(d);
 
 
