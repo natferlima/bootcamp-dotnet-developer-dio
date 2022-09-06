@@ -55,6 +55,20 @@ switch(letra)
         break;
 }
 
+// Operadores Aritméticos em C#
+
+Calculadora calc = new Calculadora();
+
+calc.Somar(10, 40);
+calc.Subtrair(100, 50);
+calc.Multiplicar(10, 5);
+calc.Dividir(100, 4);
+calc.Potencia(3, 3);
+calc.Seno(30); // não mostra os zeros mesmo pedindo 4 casas decimais
+calc.Coseno(30);
+calc.Tangente(30);
+calc.RaizQuadrada(9);
+
 
 Console.WriteLine(apresentacao);
 Console.WriteLine(quantidade);
