@@ -7,7 +7,7 @@ namespace bootcamp_dotnet_developer_dio.Models
 {
     public class Pessoa
     {
-        public string? Nome { get; set; }
+        public string Nome { get; set; }
         public int Idade { get; set; }
 
         public void Apresentar()

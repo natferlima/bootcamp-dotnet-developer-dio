@@ -39,7 +39,7 @@ int.TryParse(i, out int k); // coloca o valor padrao 0 para k
 
 // Switch
 Console.WriteLine("Digite uma letra");
-string? letra = Console.ReadLine();
+string letra = Console.ReadLine();
 
 switch(letra)
 {
