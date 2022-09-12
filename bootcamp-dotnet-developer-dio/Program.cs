@@ -1,4 +1,4 @@
-﻿using bootcamp_dotnet_developer_dio.Models;
+﻿using ExemplosFundamentos.Common.Models;
 
 Pessoa pessoa1 = new Pessoa();
 
