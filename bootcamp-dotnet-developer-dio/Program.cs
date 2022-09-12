@@ -69,6 +69,50 @@ calc.Coseno(30);
 calc.Tangente(30);
 calc.RaizQuadrada(9);
 
+// Arrays
+
+int[] arrayInteiros = new int[3];
+
+arrayInteiros[0] = 72;
+arrayInteiros[1] = 64;
+arrayInteiros[2] = 50;
+
+// alterando o tamanho do array
+Array.Resize(ref arrayInteiros, arrayInteiros.Length * 2);
+
+// Copiando array
+int[] arrayInteirosDobrado = new int[arrayInteiros.Length * 2];
+Array.Copy(arrayInteiros, arrayInteirosDobrado, arrayInteiros.Length);
+
+for(int contador = 0; contador < arrayInteiros.Length; contador++)
+{
+    Console.WriteLine($"\n Posição nº {contador} - {arrayInteiros[contador]} \n");
+}
+
+Console.WriteLine("Percorrenco Array com foreach");
+int contador2 = 0;
+foreach(int valor in arrayInteiros) {
+    Console.WriteLine($"\n Posição nº {contador2} - {valor} \n");
+    contador2++;
+}
+
+
+// Listas
+
+List<string> listaString = new List<string>();
+
+listaString.Add("SP");
+listaString.Add("BA");
+listaString.Add("MG");
+
+for(int contador = 0; contador < listaString.Count; contador ++) {
+    Console.WriteLine($"Posição nº {contador} - {listaString[contador]}");
+}
+
+foreach(string item in listaString) {
+    Console.WriteLine($"{item}");
+}
+
 
 Console.WriteLine(apresentacao);
 Console.WriteLine(quantidade);
