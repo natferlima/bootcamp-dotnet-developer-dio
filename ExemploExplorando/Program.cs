@@ -54,9 +54,123 @@ else
     Console.WriteLine($"{dataString} não é uma data válida");
 }
 
+
 Console.WriteLine(data);
 Console.WriteLine(data.ToString("dd/MM/yyyy HH:mm"));
 Console.WriteLine(data.ToShortDateString());
 Console.WriteLine(data.ToShortTimeString());
 Console.WriteLine(data2);
 
+
+// LEITURA DE ARQUIVO
+
+try {
+
+    string[] linhas = File.ReadAllLines("Arquivos/pasta/arquivo_Leitura.txt");
+
+    foreach(string linha in linhas)
+    {
+        Console.WriteLine(linha);
+    }
+
+} 
+catch(FileNotFoundException ex) 
+{
+    Console.WriteLine($"Ocorreu um erro na leitura do arquivo. Arquivo não encontrado. {ex.Message}");
+}
+catch(DirectoryNotFoundException ex) 
+{
+    Console.WriteLine($"Ocorreu um erro na leitura do arquivo. Caminho da pasta não encontrado. {ex.Message}");
+}
+catch(Exception ex) // exceção genérica
+{
+    Console.WriteLine($"Ocorreu uma exceção genérica. {ex.Message}");
+}
+finally // sempre executa dando erro ou não
+{
+    Console.WriteLine("Chegou até aqui");
+}
+
+new ExemploExcecao().Metodo1(); // jogando uma exceção genérica com throw e se não tratar com try catch exibe o stack trace
+
+
+
+// FILA
+
+Queue<int> fila = new Queue<int>();
+
+fila.Enqueue(2);
+fila.Enqueue(4);
+fila.Enqueue(6);
+fila.Enqueue(8);
+
+foreach(int item in fila)
+{
+    Console.WriteLine(item);
+}
+
+Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
+
+foreach(int item in fila)
+{
+    Console.WriteLine(item);
+}
+
+
+
+// PILHA
+
+Stack<int> pilha = new Stack<int>();
+
+pilha.Push(4);
+pilha.Push(6);
+pilha.Push(8);
+pilha.Push(10);
+
+foreach(int item in pilha)
+{
+    Console.WriteLine(item);
+}
+
+Console.WriteLine($"Removendo o elemento do topo: {pilha.Pop()}");
+
+pilha.Push(20);
+
+foreach(int item in pilha)
+{
+    Console.WriteLine(item);
+}
+
+// DICTIONARY - as chaves são sempre únicas
+
+Dictionary<string, string> estados = new Dictionary<string, string>();
+
+estados.Add("RJ", "Rio de Janeiro");
+estados.Add("SP", "São Paulo");
+estados.Add("MG", "Minas Gerais");
+
+foreach(var item in estados)
+{
+    Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+estados.Remove("RJ"); // remove sempre pela chave
+estados["MG"] = "Minas Gerais - valor alterado";
+
+foreach(var item in estados)
+{
+    Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+string chave = "SP";
+Console.WriteLine($"Verificando o elemento: {chave}");
+if(estados.ContainsKey(chave))
+{
+    Console.WriteLine($"Valor existente: {chave}");
+}
+else
+{
+    Console.WriteLine($"Valor não existe. É seguro adicionar a chave: {chave}");
+}
+
+Console.WriteLine(estados["MG"]); // acessando valores do dicionário
