@@ -174,3 +174,59 @@ else
 }
 
 Console.WriteLine(estados["MG"]); // acessando valores do dicionário
+
+
+
+// TUPLAS
+
+(int, string, string, decimal) tupla = (1, "Natália", "Lima", 10.5M); // mais recomendado pela legibilidade do código
+
+// outras formas de criar uma tupla:
+// ValueTuple<int, string, string, decimal> outroExemploTupla = (1, "Natália", "Lima", 1.80M);
+// var outroExemploTuplaCreate = Tuple.Create(1, "Natália", "Lima", 1.80M);
+
+Console.WriteLine($"Id: {tupla.Item1}");
+Console.WriteLine($"Nome: {tupla.Item2}");
+Console.WriteLine($"Sobrenome: {tupla.Item3}");
+Console.WriteLine($"Altura: {tupla.Item4}");
+
+
+LeituraArquivo arquivo = new LeituraArquivo();
+var (sucesso2, linhasArquivo, quantidadeLinhas) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt");
+
+// Coloando _ em uma das posições da tupla está indicando que esse valor não será usado = descarte
+// var (sucesso2, linhasArquivo, _) = arquivo.LerArquivo("Arquivos/arquivoLeitura.txt"); 
+
+if (sucesso2)
+{
+    Console.WriteLine("Quantidade linhas do arquivo:" + quantidadeLinhas);
+    foreach(string linha in linhasArquivo)
+    {
+        Console.WriteLine(linha);
+    }
+    
+}
+else
+{
+    Console.WriteLine("Não foi possível ler o arquivo");
+
+}
+
+
+// DECONSTRUCT
+
+Pessoa p5 = new Pessoa("Natália", "Lima");
+(string nome, string sobrenome) = p5;
+
+Console.WriteLine($"{nome} {sobrenome}");
+
+
+
+// IF TERNÁRIO
+
+int numero2 = 15;
+bool ehPar = false;
+
+ehPar = numero2 % 2 == 0;
+
+Console.WriteLine($"O número {numero2} é " + (ehPar ? "par" : "ímpar"));
