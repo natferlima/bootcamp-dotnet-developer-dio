@@ -3,12 +3,14 @@
     "Id": 1,
     "Nome_Produto": "Material de escritório",
     "Preco": 25.00,
-    "DataVenda": "2022-09-21T12:38:25.9569376-03:00"
+    "DataVenda": "2022-09-22T15:38:24.4009139-03:00",
+    "Desconto": null
   },
   {
     "Id": 2,
     "Nome_Produto": "Licença de software",
     "Preco": 110.00,
-    "DataVenda": "2022-09-21T12:38:25.9569376-03:00"
+    "DataVenda": "2022-09-22T15:38:24.4009139-03:00",
+    "Desconto": 10.0
   }
 ]

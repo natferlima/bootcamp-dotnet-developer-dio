@@ -240,8 +240,8 @@ DateTime dataAtual = DateTime.Now;
 
 List<Venda> listaVendas = new List<Venda>();
 
-Venda v1 = new Venda(1, "Material de escritório", 25.00M, dataAtual);
-Venda v2 = new Venda(2, "Licença de software", 110.00M, dataAtual);
+Venda v1 = new Venda(1, "Material de escritório", 25.00M, dataAtual, null);
+Venda v2 = new Venda(2, "Licença de software", 110.00M, dataAtual, 10);
 
 listaVendas.Add(v1);
 listaVendas.Add(v2);
@@ -261,5 +261,97 @@ List<Venda> listaVenda = JsonConvert.DeserializeObject<List<Venda>>(conteudoArqu
 
 foreach(Venda venda in listaVenda)
 {
-    Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, " + $"Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}");
+    Console.WriteLine($"Id: {venda.Id}, Produto: {venda.Produto}, " + $"Preço: {venda.Preco}, Data: {venda.DataVenda.ToString("dd/MM/yyyy HH:mm")}" + $" {(venda.Desconto.HasValue ? $"Desconto de: {venda.Desconto}" : "")}");
 }
+
+
+
+// Tipos anuláveis 
+
+bool? desejaReceberEmail = null;
+
+if(desejaReceberEmail.HasValue && desejaReceberEmail.Value) // precisa verificar se tem valor e caso tenha pega pelo .Value e pode usar != null no lugar do HasValue
+{
+    Console.WriteLine("O usuário optou por receber email.");
+}
+else
+{
+    Console.WriteLine("O usuário não respondeu ou optou por não receber email.");
+}
+
+
+
+// TIPOS ANÔNIMOS
+
+var tipoAnonimo = new { Nome = "Natália", Sobrenome = "Lima", Altura = 1.80 };
+
+Console.WriteLine("Nome: " + tipoAnonimo.Nome);
+Console.WriteLine("Sobrenome: " + tipoAnonimo.Sobrenome);
+Console.WriteLine("Altura: " + tipoAnonimo.Altura);
+
+
+var listaAnonimo = listaVenda.Select(x => new {x.Produto, x.Preco});
+
+foreach(var venda in listaAnonimo)
+{
+    Console.WriteLine($"Produto: {venda.Produto}, Preço: {venda.Preco}");
+}
+
+
+// TIPO DINÂNIMO
+
+dynamic variavelDinamica = 4;
+
+Console.WriteLine($"Tipo de variável: {variavelDinamica.GetType()}, Valor: {variavelDinamica}");
+
+variavelDinamica = "Texto";
+
+Console.WriteLine($"Tipo de variável: {variavelDinamica.GetType()}, Valor: {variavelDinamica}");
+
+variavelDinamica = true;
+
+Console.WriteLine($"Tipo de variável: {variavelDinamica.GetType()}, Valor: {variavelDinamica}");
+
+
+// Classe Genérica
+
+MeuArray<int> arrayInteiro = new MeuArray<int>();
+arrayInteiro.AdicionarElementoArray(30);
+Console.WriteLine(arrayInteiro[0]);
+
+
+MeuArray<string> arrayString = new MeuArray<string>();
+arrayString.AdicionarElementoArray("Texto");
+Console.WriteLine(arrayString[0]);
+
+
+// Métodos de Extensão
+
+int numero3 = 30;
+bool par = false;
+
+par = numero3.EhPar();
+
+
+Console.WriteLine($"O número {numero3} é " + (par ? "par" : "ímpar"));
+
+
+// Atribuindo tipos de referência
+
+Pessoa p7 = new Pessoa(nome: "Natália", sobrenome: "Lima");
+
+Pessoa p8 = p7; // altera o nome de p7 e p8 pois as duas varáveis apontam para o mesmo lugar, fazem referência ao mesmo objeto
+p8.Nome = "Ana";
+
+Console.WriteLine($"Nome da pessoa p7: {p7.NomeCompleto}");
+Console.WriteLine($"Nome da pessoa p8: {p8.NomeCompleto}");
+
+
+// tipos simples
+
+int k = 10;
+int l = k; // aqui ele faz copia não aponta para mesma referencia pq é tipo simples fica na memória stack
+l = 60; // mudar o valor de l não vai mudar o valor de k 
+
+Console.WriteLine($"Valor de k: {k}");
+Console.WriteLine($"Valor de l: {l}");
